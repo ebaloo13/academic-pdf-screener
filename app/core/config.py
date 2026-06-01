@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Project root: JOURNAL-API/
+# Project root: academic-pdf-screener/
 ROOT_DIR = Path(__file__).resolve().parents[2]
 load_dotenv(ROOT_DIR / ".env")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")

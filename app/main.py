@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.endpoints import router as api_router
 
-app = FastAPI(title="journal-api", version="1.0.0")
+app = FastAPI(title="academic-pdf-screener", version="1.0.0")
 
 # CORS (adjust origins as needed)
 app.add_middleware(

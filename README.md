@@ -1,4 +1,4 @@
-# Journal API
+# Academic PDF Screener
 
 FastAPI service and CLI tools for extracting structured PICO/PICOS data from academic journal articles. The pipeline reads PDF or Excel inputs, extracts text, sends it to OpenAI Structured Outputs with a required JSON Schema, validates the response, and optionally writes traceable JSON/CSV reports.
 
@@ -14,7 +14,7 @@ FastAPI service and CLI tools for extracting structured PICO/PICOS data from aca
 ## Project Structure
 
 ```text
-Journal-api/
+academic-pdf-screener/
 ├─ app/
 │  ├─ main.py                    FastAPI app entrypoint
 │  ├─ api/endpoints.py           /analyze-text and /analyze-pdf routes
@@ -129,9 +129,8 @@ RUN_INTEGRATION=1 pytest tests/test_pdf_analysis.py
 
 1. Rotate the OpenAI API key that was stored in `.env`.
 2. Confirm `.env`, `data/`, `reports/`, `.venv/`, caches, and private PDFs are not staged.
-3. Remove or resolve the nested Git repository currently inside `app/.git` before creating the root repository.
-4. Review whether any PDFs, Excel files, Word documents, or report outputs are private or copyrighted.
-5. Run tests in a clean macOS/Linux virtual environment.
+3. Review whether any PDFs, Excel files, Word documents, or report outputs are private or copyrighted.
+4. Run tests in a clean macOS/Linux virtual environment.
 
 ## Notes
 

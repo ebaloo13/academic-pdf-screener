@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from app.core.config import LOG_LEVEL
 
-LOGGER_NAME = "journal-api"
+LOGGER_NAME = "academic-pdf-screener"
 
 def _ensure_logger(name: str, level: str) -> logging.Logger:
     logger = logging.getLogger(name)
