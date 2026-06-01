@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "population": {
+            "type": "object",
+            "properties": {
+                "condition": {"type": "string"},
+                "age_criteria": {"type": "string"},
+                "severity": {"type": "string"},
+                "treatment_history": {"type": "string"}
+            },
+            "required": ["condition", "age_criteria", "severity", "treatment_history"],
+            "additionalProperties": false
+        },
+        "intervention": {
+            "type": "object",
+            "properties": {
+                "type": {"type": "string"},
+                "name": {"type": "string"},
+                "dosage": {"type": "string"},
+                "route": {"type": "string"},
+                "duration": {"type": "string"}
+            },
+            "required": ["type", "name", "dosage", "route", "duration"],
+            "additionalProperties": false
+        },
+        "comparison": {
+            "type": "object",
+            "properties": {
+                "type": {"type": "string"},
+                "description": {"type": "string"}
+            },
+            "required": ["type", "description"],
+            "additionalProperties": false
+        },
+        "outcome": {
+            "type": "object",
+            "properties": {
+                "efficacy": {"type": "array", "items": {"type": "string"}},
+                "quality_of_life": {"type": "array", "items": {"type": "string"}},
+                "safety": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["efficacy", "quality_of_life", "safety"],
+            "additionalProperties": false
+        },
+        "study_design": {
+            "type": "object",
+            "properties": {
+                "phase": {"type": "string"},
+                "design": {"type": "string"},
+                "special_notes": {"type": "string"}
+            },
+            "required": ["phase", "design", "special_notes"],
+            "additionalProperties": false
+        }
+    },
+    "required": ["population", "intervention", "comparison", "outcome", "study_design"],
+    "additionalProperties": false
+}

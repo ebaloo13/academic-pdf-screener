@@ -1,0 +1,162 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PICO_BHS_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "condition": { "type": "string" },
+        "age_criteria": { "type": ["string", "null"] },
+        "severity": { "type": ["string", "null"] },
+        "treatment_history": { "type": ["string", "null"] },
+        "inclusion_criteria": { "type": ["array", "null"], "items": { "type": "string" } },
+        "exclusion_criteria": { "type": ["array", "null"], "items": { "type": "string" } },
+        "baseline_score": { "type": ["string", "null"] },
+        "disease_duration": { "type": ["string", "null"] }
+      },
+      "required": [
+        "condition",
+        "age_criteria",
+        "severity",
+        "treatment_history",
+        "inclusion_criteria",
+        "exclusion_criteria",
+        "baseline_score",
+        "disease_duration"
+      ]
+    },
+
+    "intervention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "name": { "type": "string" },
+        "dosage": { "type": ["string", "null"] },
+        "route": { "type": ["string", "null"] },
+        "frequency": { "type": ["string", "null"] },
+        "duration": { "type": ["string", "null"] },
+        "combination": { "type": ["string", "null"] }
+      },
+      "required": [
+        "type",
+        "name",
+        "dosage",
+        "route",
+        "frequency",
+        "duration",
+        "combination"
+      ]
+    },
+
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": ["string", "null"] },
+        "name": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "dosage": { "type": ["string", "null"] },
+        "route": { "type": ["string", "null"] },
+        "frequency": { "type": ["string", "null"] },
+        "duration": { "type": ["string", "null"] }
+      },
+      "required": [
+        "type",
+        "name",
+        "description",
+        "dosage",
+        "route",
+        "frequency",
+        "duration"
+      ]
+    },
+
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "efficacy": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/OutcomeItem" }
+        },
+        "quality_of_life": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/OutcomeItem" }
+        },
+        "safety": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/OutcomeItem" }
+        }
+      },
+      "required": ["efficacy", "quality_of_life", "safety"]
+    },
+
+    "study_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "phase": { "type": ["string", "null"] },
+        "design": { "type": ["string", "null"] },
+        "randomization": { "type": ["string", "null"] },
+        "blinding": { "type": ["string", "null"] },
+        "centers": { "type": ["string", "null"] },
+        "sample_size": { "type": ["string", "null"] },
+        "follow_up": { "type": ["string", "null"] },
+        "special_notes": { "type": ["string", "null"] }
+      },
+      "required": [
+        "phase",
+        "design",
+        "randomization",
+        "blinding",
+        "centers",
+        "sample_size",
+        "follow_up",
+        "special_notes"
+      ]
+    },
+
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trial_acronym": { "type": ["string", "null"] },
+        "registration_id": { "type": ["string", "null"] },
+        "nct_number": { "type": ["string", "null"] },
+        "sponsor": { "type": ["string", "null"] },
+        "country": { "type": ["string", "null"] },
+        "doi": { "type": ["string", "null"] },
+        "pmid": { "type": ["string", "null"] }
+      },
+      "required": [
+        "trial_acronym",
+        "registration_id",
+        "nct_number",
+        "sponsor",
+        "country",
+        "doi",
+        "pmid"
+      ]
+    }
+  },
+
+  "required": ["population", "intervention", "comparison", "outcomes", "study_design", "identifiers"],
+
+  "$defs": {
+    "OutcomeItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "definition": { "type": ["string", "null"] },
+        "timepoint": { "type": ["string", "null"] },
+        "instrument_or_scale": { "type": ["string", "null"] }
+      },
+      "required": ["name", "definition", "timepoint", "instrument_or_scale"]
+    }
+  }
+}

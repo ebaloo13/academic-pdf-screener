@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PICO_Demo_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "condition": { "type": "string" },
+        "age_criteria": { "type": ["string", "null"] },
+        "severity": { "type": ["string", "null"] }
+      },
+      "required": ["condition", "age_criteria", "severity"]
+    },
+
+    "intervention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "dosage": { "type": ["string", "null"] },
+        "route": { "type": ["string", "null"] }
+      },
+      "required": ["name", "dosage", "route"]
+    },
+
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] }
+      },
+      "required": ["name", "description"]
+    },
+
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "efficacy": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/OutcomeItem" }
+        },
+        "safety": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/OutcomeItem" }
+        }
+      },
+      "required": ["efficacy", "safety"]
+    },
+
+    "study_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "design": { "type": ["string", "null"] },
+        "phase": { "type": ["string", "null"] }
+      },
+      "required": ["design", "phase"]
+    }
+  },
+  "required": ["population", "intervention", "comparison", "outcomes", "study_design"],
+
+  "$defs": {
+    "OutcomeItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "timepoint": { "type": ["string", "null"] },
+        "measure": { "type": ["string", "null"] }
+      },
+      "required": ["name", "timepoint", "measure"]
+    }
+  }
+}
